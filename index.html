@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Simon-Alone</title>
     <style>
         body {
             display: flex;
@@ -29,8 +29,11 @@
         }
 
         section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 100%;
-            
+            z-index: 1;
         }
 
         .bottom {
@@ -62,7 +65,7 @@
             transition: font-size .52s ease-in-out;
         }
 
-        .header_text:hover {
+        .header_text.hover {
             background-color:rgb(255, 255, 255);
             color: rgb(0, 0, 0);
             border-radius: 15px;
@@ -107,7 +110,10 @@
             height: 70%;
             background-color: black;
         }   
-
+        .header_model a {
+            text-decoration: none;
+            color: inherit;
+        }
         .icon {
             position: absolute;
             right: 5%;
@@ -119,7 +125,11 @@
             cursor: pointer;
         }
 
-        img {
+        .top_icon:hover{
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+
+        }
+        .top_icon img {
             height: 100%;
         }
 
@@ -131,6 +141,7 @@
 
         .main {
             height: 100%;
+            width: 50%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -141,7 +152,7 @@
             position: relative;
             flex: 1;
             margin: 10px;
-            width: 25%;
+            width: 50%;
             height: 100px;
             border-radius: 15px;
             background-color: rgb(255, 255, 255);
@@ -212,19 +223,26 @@
         }
         
         .charactor {
-            position: absolute;
-            width: 100%;
+            
+            z-index: 1;
             height: 50%;
             bottom: 10%;
-            z-index: -999;
         }
         .charactor img {
             width: 500px;
             height: 600px;
+            cursor: pointer;
+            transition: width, height,transform .5s ease-in-out;
+        }
+        .charactor :hover {
+            width: 600px;
+            height: 720px;
+            transform: translateY(-15%);
         }
         .simon {
             position: absolute;
             right: 0px;
+            transform: rotateX(0deg);
         }
         .alone {
             position: absolute;
@@ -234,7 +252,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-
         }
         .bottom p { 
             color: white;
@@ -246,6 +263,7 @@
             content:'❤';
             position: absolute;
             left:-30px;
+            color: red;
         }
         .bottom p::after {
             content:''
@@ -255,14 +273,26 @@
 <body>
     <header style="flex:2">
         <div class="logo">
-            <img src="img/moon.png" style=" height: 100%;" alt="">
+            <a href="index.html">
+                <img src="img/moon.png" style=" height: 100%;" alt="">
+            </a>
         </div>
         <div class="header_model">
-            <div class="header_text">音乐</div>
-            <div class="header_text">游戏</div>
-            <div class="header_text">摄影</div>
-            <div class="header_text">做饭</div>
-            <div class="header_text">职业</div>
+            <a href="music.html">
+                <div class="header_text" id="header_music">音乐</div>
+            </a>
+            <a href="game.html">
+                <div class="header_text" id="header_game">游戏</div>
+            </a>
+            <a href="photo.html">
+                <div class="header_text" id="header_photo">摄影</div>
+            </a>
+            <a href="cook.html">
+                <div class="header_text" id="header_cook">做饭</div>
+            </a>
+            <a href="career.html">
+                <div class="header_text" id="header_career">职业</div>
+            </a>
         </div>
         <div class="icon">
             <div class="top_icon">
@@ -321,20 +351,21 @@
             </div>
         </div>
     </section>
-    <div class="charactor">
-        <div class="simon">
-            <img src="img/simon.png" alt="">
-        </div>
-        <div class="alone">
-            <img src="img/alone.png" alt="">
-        </div>
+    
+    <div class="simon charactor">
+        <img src="img/simon.png" alt="">
     </div>
+    <div class="alone charactor">
+        <img src="img/alone.png" alt="">
+    </div>
+    
     <div class="bottom" style="flex:1">
         <p>Simon</p>
         <p>Alone</p>
     </div>
 
     <script>
+        //首页大色块详情效果
         const intro_mains = document.querySelectorAll('.intro_main');
         intro_mains.forEach(function(intro_main) {
             intro_main.addEventListener('mouseenter', function() {
@@ -360,24 +391,43 @@
                 // console.log(text);
             })
         })
-        
+
+        //导航栏模块文字效果
         const header_texts = document.querySelectorAll('.header_text');
         console.log(header_texts);
         header_texts.forEach(function(header_text) {
-            header_text.addEventListener('click', function() {
-                header_texts.forEach(function(header_text_tmp) {
-                    header_text_tmp.classList.remove('black')
-                })
-                // this.style.color = 'white';
+            // header_text.addEventListener('click', function() {
+            //     // header_texts.forEach(function(header_text_tmp) {
+            //     //     header_text_tmp.classList.remove('black')
+            //     // })
+            //     // this.style.color = 'white';
+            //     this.classList.add('black')
+            //     console.log(header_text);
+            // })
+            header_text.addEventListener('mouseenter', function() {
                 this.classList.add('black')
-                console.log(header_text);
+            })
+            header_text.addEventListener('mouseleave', function() {
+                this.classList.remove('black')
             })
         })
 
+        //logo点击跳转首页效果
         const moon = document.querySelector('.logo');
         moon.addEventListener('click', function() {
             header_texts.forEach(function(header_text) {
                 header_text.classList.remove('black');
+            })
+        })
+
+        //icon图标效果
+        const icons = document.querySelectorAll('.top_icon');
+        icons.forEach(function(icon) {
+            icon.addEventListener('mouseenter', function() {
+                icon.classList.add('hover')
+            })
+            icon.addEventListener('mouseleave', function() {
+                icon.classList.remove('hover')
             })
         })
     </script>
