@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>musict</title>
+    <title>music</title>
     <link rel="stylesheet" href="header.css">
 
     <style>
+        ::-webkit-scrollbar {
+            width: 0px;
+        }
+        body {
+            height: max-content;
+            overflow-y: auto;
+        }
         #header_music {
             position: relative;
             /* text-decoration: underline #ffffff; */
@@ -21,8 +28,138 @@
             position: absolute;
             bottom: 2px;
             left: 8px;
-            background-color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
+        }
+        header {
+            background-color: rgb(245,239,227);;
+        }
+        .musicPlayer {
+            margin-top: 120px;
+            width: 80%;
+            height: 600px;
+            /* background: rgb(255, 255, 255, 0.43); */
+            border-radius: 2rem;
+            gap: 1rem;
+        }
+        .flex {
+            display: flex;
+        }
+        .musicPlayerDiv {
+            background-color: black;
+            border-radius: 1rem;
+            background: rgb(255, 255, 255, 0.5);
+        }
+        .intro {
+            height: 140px;
+            gap: 1rem;
+        }
+        .intro .text {
+            width: 200px;
+            height: 140px;
+        }
+        .intro .text h1 {
+            position: relative;
+        }
+        .intro .text h1::before {
+            content: 'music';
+            position: absolute;
+            font-size: 10px;
+            right: 80px;
+            bottom: -2px;
+        }
+        .column {
+            flex-direction: column;
+        }
+        .title {
+            margin-left: 1rem;
+        }
+        .center {
+            align-items: center;
+            justify-content: center;
+        }
+        .musicPlayer .img {
+            background: black;
+            width: 120px;
+            height: 120px;
+        }
+        .list {
+            margin-left: 20px;
+        }
+        .list a {
+            /* list-style-type: none;
+            list-style: none; */
+            color: black;
+            text-decoration: none;
+        }
+        .list .musicList {
+            height: 50px;
+            width: 100%;
+            cursor: pointer;
+        }
+        .icon_ {
+            gap: 12px;
+        }
+        .icon_ img {
+            max-height: 20px;
+        }
+        #topEle {
             
+        }
+        .musicPlayerBtn {
+            width: 38px;
+            height: 38px;
+            border: 3px solid #3c3c3c;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: .3rem;
+            cursor: pointer;
+        }
+        .container {
+            width: .3rem;
+            height: 1rem;
+            background-color: #3c3c3c;
+            border-radius: 4rem;
+            transition: all .6s;
+        }
+        .musicPlayerBtn>.side {
+            animation: side .6s .4s linear infinite;
+            height: 50%;
+        }
+        .musicPlayerBtn>.center {
+            animation: center .6s .4s linear infinite;
+            height: 40%;
+        }
+        .pause>.side {
+            height: 40%;
+            animation-play-state: paused !important;
+        }
+        .pause>.center {
+            height: 60%;
+            animation-play-state: paused !important;
+        }
+        @keyframes side {
+            50% {
+                height: 20%;
+            }
+        }
+        @keyframes center {
+            50% {
+                height: 70%;
+            }
+        }
+        .bottom {
+            justify-self: last baseline;
+            gap: 12px;
+        }
+        .bottom img {
+            max-height: 37.33px;
+            cursor: pointer;
+        }
+        .liric p.active {
+            color:rgb(222, 38, 38);
+            font-size: 20px;
         }
     </style>
 </head>
@@ -73,8 +210,263 @@
             </div>
         </div>
     </header>
-    <div></div>
-
+    <div class="musicPlayer flex">
+        <div style="flex: 2" class="musicPlayerDiv flex column">
+            <div class="intro flex center">
+                <div class="img">
+                </div>
+                <div class="text">
+                    <h3 class="title">我的音乐</h3>
+                    <h1 class="title">Simon</h1>
+                </div>
+            </div>
+            <div id="topEle" class="musicList flex center">
+                <p style="width: 70%">全部歌曲</p>
+            </div>
+            <div class="list flex column ">
+                <div class="musicList flex center">
+                    <audio data-id="1" src="music/sound.mp3" control></audio>
+                    <p style="width: 200px">sound</p>
+                    <div class="icon_ flex center">
+                        <img src="icon/love.png" alt="">
+                        <img src="icon/share.png" alt="">
+                        <img src="icon/download.png" alt="">
+                    </div>
+                </div>
+                <div class="musicList flex center">
+                    <audio data-id="2" src="music/dirty.mp3" control></audio>
+                    <p style="width: 200px">talk dirty</p>
+                    <div class="icon_ flex center">
+                        <img src="icon/love.png" alt="">
+                        <img src="icon/share.png" alt="">
+                        <img src="icon/download.png" alt="">
+                    </div>
+                </div>
+                <div class="musicList flex center">
+                    <audio data-id="3" src="music/倒带-alone.mp3" control></audio>
+                    <p style="width: 200px">倒带--alone</p>
+                    <div class="icon_ flex center">
+                        <img src="icon/love.png" alt="">
+                        <img src="icon/share.png" alt="">
+                        <img src="icon/download.png" alt="">
+                    </div>
+                </div>
+                <div class="musicList flex center">
+                    <audio data-id="4" src="music/如果可以.mp4" control></audio>
+                    <p style="width: 200px">如果可以</p>
+                    <div class="icon_ flex center">
+                        <img src="icon/love.png" alt="">
+                        <img src="icon/share.png" alt="">
+                        <img src="icon/download.png" alt="">
+                    </div>
+                </div>
+                <div class="musicList flex center">
+                    <audio data-id="5" src="music/爱很简单.mp4" control></audio>
+                    <p style="width: 200px">爱很简单</p>
+                    <div class="icon_ flex center">
+                        <img src="icon/love.png" alt="">
+                        <img src="icon/share.png" alt="">
+                        <img src="icon/download.png" alt="">
+                    </div>
+                </div>
+                <div class="musicList flex center">
+                    <audio data-id="6" src="music/普通disco.mp3" control></audio>
+                    <p style="width: 200px">普通disco</p>
+                    <div class="icon_ flex center">
+                        <img src="icon/love.png" alt="">
+                        <img src="icon/share.png" alt="">
+                        <img src="icon/download.png" alt="">
+                    </div>
+                </div>
+                <div class="musicList flex center">
+                    <audio data-id="7" src="music/sound.mp3" control></audio>
+                    <p style="width: 200px">春风吹</p>
+                    <div class="icon_ flex center">
+                        <img src="icon/love.png" alt="">
+                        <img src="icon/share.png" alt="">
+                        <img src="icon/download.png" alt="">
+                    </div>
+                </div>
+                <div class="musicList flex center">
+                    <audio data-id="8" src="music/sound.mp3" control></audio>
+                    <p style="width: 200px">春风吹</p>
+                    <div class="icon_ flex center">
+                        <img src="icon/love.png" alt="">
+                        <img src="icon/share.png" alt="">
+                        <img src="icon/download.png" alt="">
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div style="flex: 5" class="musicPlayerDiv flex column center" >
+            <div class="songTxt flex center column">
+                <h1></h1>
+                <!-- <div class="liric flex center column">
+                    <p>忘了是怎么开始</p>
+                    <p class="active">也许就是对你</p>
+                    <p>有一种感觉</p>
+                </div> -->
+            </div>
+            <div class="" style="flex: 9">
+                <canvas id="canvasFormAudio" width="895" height="420"></canvas>
+            </div>
+            <div class="bottom flex center" style="flex:2">
+                <div class="preMusic">
+                    <img src="icon/pre.png" alt="">
+                </div>
+                <div class="musicPlayerBtn pause">
+                    <div class="container side"></div>
+                    <div class="container center"></div>
+                    <div class="container side"></div>
+                </div>
+                <div class="nextMusic">
+                    <img src="icon/next.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cd flex center column">
+        
+       
+    </div>
     <script src="header.js"></script>
+    <script>
+        //切换歌曲时其他歌曲停止播放
+        const audios = document.querySelectorAll('audio')
+        audios.forEach(audio => {
+            audio.addEventListener('play', function() {
+                audios.forEach(other => {
+                    if (other !== audio) {
+                        other.pause()
+                        other.currentTime = 0
+                    }
+                })
+            })
+        })
+        songs = ['music/sound.mp3', 'music/dirty.mp3', 'music/倒带-alone.mp3', 'music/爱很简单.mp3', 'music/如果可以.mp3']
+        let currentMusic = 1;
+        //右边控制切换和播放
+        const musicPlayer = document.querySelector('.musicPlayerBtn')
+        musicPlayer.addEventListener('click', function () {
+            this.classList.toggle('pause')
+            const audio_ = document.querySelector(`audio[data-id="${currentMusic}"]`)
+            if (this.classList.contains('pause')) {
+                audio_.pause()
+                // isPlaying = false
+            } else {
+                audio_.play()
+                songRender()
+                draw(audio_)
+            }
+        })
+        const nextMusic = document.querySelector('.nextMusic')
+        const preMusic = document.querySelector('.preMusic')
+        nextMusic.addEventListener('click', function() {
+            currentMusic = currentMusic < 8 ? currentMusic + 1 : 1;
+            const audio_ = document.querySelector(`audio[data-id = "${currentMusic}"]`)
+            audio_.play()
+            console.log(currentMusic);
+            musicPlayer.classList.remove('pause')
+            songRender()
+            isPlaying = false
+            draw(audio_)
+            
+        })
+        preMusic.addEventListener('click', function() {
+            currentMusic = currentMusic > 1 ? currentMusic - 1 : 8;
+            const audio_ = document.querySelector(`audio[data-id = "${currentMusic}"]`)
+            audio_.play()
+            console.log(currentMusic);
+            musicPlayer.classList.remove('pause')
+            songRender()
+            isPlaying = false
+            draw(audio_)
+            
+        })
+        //左边点击歌曲播放切换
+        const musicList = document.querySelectorAll('.musicList')
+        console.log(musicList);
+        musicList.forEach(function(music) {
+            music.addEventListener('click', function() {
+                console.log(music)
+                const player = music.querySelector('audio')
+                console.log(player);
+                player.play()
+                currentMusic = music.querySelector('audio').dataset.id
+                if (musicPlayer.classList.contains('pause')) {
+                    musicPlayer.classList.remove('pause')
+                }
+                songRender()
+                isPlaying = false
+                draw(player)
+                
+            })
+        })
+        let context1;
+        let source;
+        let analyserfa;
+        let canvasFormAudio;
+        let ctxfa;
+        let isPlaying = true;
+        canvasFormAudio = document.getElementById('canvasFormAudio');
+        ctxfa = canvasFormAudio.getContext("2d");
+        try {
+            context1 = new (window.AudioContext || window.webkitAudioContext);
+        } catch(e) {
+            throw new Error('The Web Audio API is unavailable');
+        }
+        analyserfa=context1.createAnalyser();
+        function draw (stream) {
+            // if (audioContext) {
+            //     audioContext.close();
+            // }
+            isPlaying = true
+            let audio = stream
+            let source = context1.createMediaElementSource(audio);
+            source.connect(analyserfa);
+            analyserfa.connect(context1.destination);
+            drawSpectrumfa();
+        }
+        function drawSpectrumfa() {
+            if (!isPlaying) {
+                ctxfa.clearRect(0, 0, canvasFormAudio.width, canvasFormAudio.height);
+                return
+            }
+            let WIDTH = canvasFormAudio.width;
+            let HEIGHT= canvasFormAudio.height;
+            let array =  new Uint8Array(128);
+            analyserfa.getByteFrequencyData(array);
+            ctxfa.clearRect(0, 0, WIDTH, HEIGHT);
+            for ( let i = 0; i < (array.length); i++ ){
+                let value = array[i];
+                // console.log(value);
+                let lingrad = ctxfa.createLinearGradient(0, HEIGHT/2, 0, HEIGHT);
+                lingrad.addColorStop(0, "#F8A39B");
+                lingrad.addColorStop(1, "#394DB3");
+                ctxfa.fillStyle = lingrad;
+                // ctxfa.fillRect(i*14,HEIGHT-value,10,HEIGHT);
+                ctxfa.beginPath()
+                ctxfa.moveTo(i*14, HEIGHT)
+                ctxfa.lineTo(i*14, HEIGHT - value + 5)
+                ctxfa.arc(i*14 + 5, HEIGHT - value + 5, 5, 0, Math.PI, true)
+                ctxfa.lineTo(i*14 + 10, HEIGHT - value + 5)
+                ctxfa.lineTo(i*14 + 10, HEIGHT)
+                ctxfa.fill()
+                // ctxfa.lineCap = 'round'
+                console.log(value);
+                
+            }
+            requestAnimationFrame(drawSpectrumfa);
+        }
+        //显示歌词和歌名
+        const songTxt = document.querySelector('.songTxt')
+        function songRender() {
+            const songTitle = songTxt.querySelector('h1')
+            songTitle.innerHTML = document.querySelector(`audio[data-id="${currentMusic}"]`).parentNode.querySelector('p').innerHTML
+            console.log(currentMusic);
+            
+        }
+    </script>
 </body>
 </html>

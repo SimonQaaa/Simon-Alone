@@ -7,10 +7,48 @@
     <title>game</title>
     <link rel="stylesheet" href="header.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        ::-webkit-scrollbar {
+            width: 0px; /* 滚动条的宽度 */
+        }
+
+        /* 滚动条轨道 */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; /* 轨道背景色 */
+        }
+
+        /* 滚动条滑块 */
+        ::-webkit-scrollbar-thumb {
+            background: #888; /* 滑块背景色 */
+            border-radius: 0px; /* 滑块圆角 */
+        }
+
+        /* 滚动条滑块在悬停时的效果 */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; /* 悬停时的滑块背景色 */
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            /* box-sizing: border-box; */
+        }
         body {
-            overflow-y: auto;
+            overflow-y: scroll;
             overflow-x: hidden;
             display: block;
+            background-color: rgb(245,239,227);
+        }
+        header {
+            z-index: 999;
+            background-color: rgb(245,239,227);
+            position: fixed;
+            top: -100px;
+            transition: top 1s ease;
+        }
+        header.active {
+            top:0px;
         }
         #header_game {
             position: relative;
@@ -25,18 +63,18 @@
             position: absolute;
             bottom: 2px;
             left: 8px;
-            background-color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
         }
         .section {
             display:grid;
             /* display: flex;
             justify-content: center;
             align-items:center; */
-            width: 1600px;
-            height: 1600px;
+            width: 1400px;
+            height: 1780px;
             /* background-color: black; */
             /* margin-top: 140px; */
-            margin: 140px auto 20px;
+            margin: 60px auto 20px;
             /* position: relative; */
         }
         section {
@@ -47,7 +85,223 @@
             justify-content: center;
             align-items: center;
             margin: 40px auto 0px;
-            background-color:rgb(157, 107, 204);
+            /* background-color:rgb(196,90,77); */
+            gap: 2rem;
+        }
+        .banner {
+            /* position: absolute; */
+            /* top: 100px; */
+            width: 100%;
+            height: 101vh;
+            /* background-color:rgb(157, 107, 204); */
+        }
+        .slider {
+            position: relative;
+            height: 100%;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slider_img {
+            width: 100%;
+        }
+        .slider_img ul {
+            display: flex;
+            flex-direction: row;
+            list-style-type: none;
+            width: 500%;
+            margin: 0px;
+            padding: 0px;
+            transition: transform 2s ease-in-out;
+        }
+        .slider_img li {
+            /* display: none; */
+            transition: display 1s ease-in-out;
+            width: 20%;
+            /* padding: 4px; */
+        }
+        .slider_img img {
+            width: 100%;
+            max-height: 100vh;
+        }
+        .slider_point {
+            position: absolute;
+            bottom: 30px;
+            margin: 0px auto 0px;
+        }
+        .slider_point ul {
+            display: flex;
+            flex-direction: row;
+            width: max-content;
+            margin: 0px auto 0px;
+        }
+        .slider_point li {
+            position: relative;
+            width: 10px;
+            height: 10px;
+            padding: 10px;
+            font-size: 30px;
+            transition: padding 1s ease;
+            cursor: pointer;
+        }
+        .slider_point li::marker {
+            content:'';
+        }
+        .slider_point li::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 15px; /* 圆的直径 */
+            height: 15px; /* 圆的直径 */
+            border: 3px solid rgb(196,90,77); /* 边框宽度和颜色 */
+            border-radius: 50%; /* 使边框形成圆形 */
+            transform: translate(-50%, -50%); /* 将圆心定位到容器中心 */
+            transition:  height 1s ease, width 1s ease;
+        }
+        .slider_point li.active {
+            padding: 10px 15px 10px 10px;
+        }
+        .slider_point li.active::before{
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px; /* 圆的直径 */
+            height: 20px; /* 圆的直径 */
+            background-color:rgb(196,90,77);
+            border-radius: 50%; /* 使边框形成圆形 */
+            transform: translate(-50%, -50%); /* 将圆心定位到容器中心 */
+        }
+        .elevator {
+            width: 80px;
+            height: max-content;
+            background-color: #e1c7ac;
+            border-radius: 2rem;
+        }
+        .elevator.active {
+            position: fixed;
+            left: 10px;
+            bottom: 50%;
+        }
+        .elevator_class {
+            color: rgb(0, 0, 0);
+            text-align: center;
+            border-radius: 1rem;
+            margin: 15px 0px 15px;
+            padding: 15px 0px 15px;
+            cursor:pointer;
+        }
+        .elevator_class:hover {
+            /* transform: scale(1.1); */
+            background-color:#cca278;
+            color:rgb(255, 255, 255);
+        }
+        .elevator_class.active {
+            background-color: #cca278;
+            color:rgb(255, 255, 255);
+        }
+        #single {
+            margin-bottom: 100px;
+        }
+        .button-prev, .button-next {
+			transition: 0.5s;
+			outline: none;
+			position: absolute;
+			width: 140px;
+			z-index: 10;
+			top: 65vh;
+			transform: translateY(-34px);
+			cursor: pointer;
+		}
+		.button-prev {
+			left: 4vw;
+		}
+		.button-next {
+			right: 4vw;
+		}
+		.button.disabled {
+			opacity: 0.2;
+			cursor: default;
+		}
+		#arrow-svg-home {
+			transform: translateY(353px);
+		}
+		.button-next #arrow-svg-home {
+			transform: translateY(353px) rotateY(180deg);
+			transform-origin: 80px 0px 0px;
+		}
+		svg {
+			transition: 0.5s;
+		}
+		.cls-1 {
+			transition: 0.5s;
+			opacity: 0.4;
+			transform-origin: -20px 40px;
+			opacity: 1;
+		}
+		.cls-4 {
+			transition: 0.5s;
+			stroke-width: 2px;
+			stroke: #fff;
+			fill: none;
+			stroke-dasharray: 1;
+			stroke-dashoffset: 1;
+			opacity: 0.4;
+			transform-origin: 0px 0px 0px;
+		}
+		#arrow-trg {
+			transition: 0.5s;
+			fill: #fff;
+			transform: rotateY(180deg) translate(-53px, 39px);
+		}
+		#line {
+			transition: 0.5s;
+			stroke: #fff;
+			transform: translate(50px, 42px);
+		}
+		.button-prev:not(.disabled):hover svg {
+			transform: translateX(-25px);
+		}
+		.button-next:not(.disabled):hover svg {
+			transform: translateX(25px);
+		}
+		.button:not(.disabled):hover .cls-1 {
+			transform: scale(1.1);
+		}
+		.button:not(.disabled):hover .cls-4 {
+			stroke-dasharray: 2px;
+			stroke-dashoffset: 2px;
+			opacity: 1;
+		}
+		.button:not(.disabled):hover #arrow-trg {
+			transform: rotateY(180deg) translate(-37px, 39px);
+		}
+		.button:not(.disabled):hover #line {
+			transform: translate(35px, 42px) scaleX(0.33);
+		}
+
+        section .intro {
+            font-size:18px;
+            font-weight:400;
+            /* color: white; */
+            line-height: 2;
+            flex:1;
+            margin: 40px;
+            padding: 40px;
+            border-radius: 2rem;
+            /* background-color:rgb(196,90,77); */
+            /* height: 60%; */
+        }
+        section .container {
+            flex:1;
+        }
+        .container img {
+            max-width: 760px;
+        }
+        .section h1 {
+            transform: translateX(100px);
         }
     </style>
 </head>
@@ -98,17 +352,228 @@
             </div>
         </div>
     </header>
-
+    <div class="banner">
+        <div class="slider">
+            <div class="slider_img">
+                <ul>
+                    <li data-id="1">
+                        <img src="photo/first.png" alt="">
+                    </li>
+                    <li data-id="2">
+                        <img src="photo/second.png" alt="">
+                    </li>
+                    <li data-id="3">
+                        <img src="photo/third.png" alt="">
+                    </li>
+                    <li data-id="4">
+                        <img src="photo/fourth.png" alt="">
+                    </li>
+                    <li data-id="5">
+                        <img src="photo/fifth.png" alt="">
+                    </li>
+                </ul>
+            </div>
+            <div class="slider_point">
+                <ul>
+                    <li data-id="1"></li>
+                    <li data-id="2"></li>
+                    <li data-id="3"></li>
+                    <li data-id="4"></li>
+                    <li data-id="5"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="button-prev button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 350 160 90">
+            <g id="arrow-svg-home">
+                <g id="circ" class="cls-1">
+                    <circle cx="42" cy="42" r="40" class="cls-4"></circle>
+                </g>
+                <g id="arrow">
+                    <path id="arrow-trg" d="M.983,6.929,4.447,3.464.983,0,0,.983,2.482,3.464,0,5.946Z"></path>
+                </g>
+                <path id="line" d="M120,0H0" class="cls-3" ></path>
+            </g>
+        </svg>
+    </div>
+    <!--右箭头--> 
+    <div class="button-next button"> 
+        <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 350 160 90">
+            <g id="arrow-svg-home">
+                <g id="circ" class="cls-1">
+                    <circle  cx="42" cy="42" r="40" class="cls-4"></circle>
+                </g>
+                <g id="arrow">
+                    <path id="arrow-trg" d="M.983,6.929,4.447,3.464.983,0,0,.983,2.482,3.464,0,5.946Z" class="cls-2"></path>
+                </g>
+                <path id="line" d="M120,0H0" class="cls-3" ></path>
+            </g>
+        </svg>
+    </div>
     <div class="section">
+        <h1 id="online_">网络游戏</h1>
         <section id="online" class="">
-
+            <div class="intro">
+                <p>原神是一款我的问题原神是一款我的问题原神是一款我的问题原神是一款我的问题原神是一款我的问题原神是一款我的问题原神是一款我的问题原神是一款我的问题原神是一款我的问题原神是一款我的问题原神是一款我的问题原神是一款我的问题原神是一款我的问题</p>
+            </div>
+            <div class="container">
+                <img src="photo/online.png" alt="">
+            </div>
         </section>
-    
+        <h1 id="single_">单机游戏</h1>
         <section id="single">
-    
+            <div class="container">
+                <img src="photo/single.png" alt="">
+            </div>
+            <div class="intro">
+                <p>原神是一款我的问题原神是一款我的问题原神是一款我的问题原神是一款我的问题原神是一款我的问题原神是一款我的问题原神是一款我的问题原神是一款我的问题原神是一款我的问题原神是一款我的问题原神是一款我的问题原神是一款我的问题原神是一款我的问题</p>
+            </div>
         </section>
     </div>
     
+    <div class="elevator ">
+        <div class="elevator_class" id="elevator_top" data-name = 'top'>
+            <p>顶部</p>
+        </div>
+        <div class="elevator_class" id="elevator_online" data-name = 'online'>
+            <p>网游</p>
+        </div>
+        <div class="elevator_class" id="elevator_single" data-name = 'single'>
+            <p>单机</p>
+        </div>
+    </div>
     <script src="header.js"></script>
+    <script>
+        //轮播图效果
+        let currentImg = 1;
+        const slider = document.querySelector('.slider');
+        const imgLi = slider.querySelectorAll('.slider_img li');
+        const pointLi = slider.querySelectorAll('.slider_point li')
+        pointLi[0].classList.add('active');
+        pointLi.forEach(function(li) {
+            li.addEventListener('click', function() {
+                currentImg = li.dataset.id;
+                const ul = slider.querySelector('.slider_img ul')
+                const pos = -(currentImg - 1)* window.innerWidth;
+                // console.log(pos);
+                // console.log(slider.querySelector('.active'));
+                ul.style.transform = `translateX(${pos}px)`
+                slider.querySelector('.active').classList.remove('active');
+                pointLi[li.dataset.id - 1].classList.add('active')
+            })
+        }) 
+        //滑动一个页面后电梯出现
+        let scrollY = document.documentElement.scrollTop;
+        console.log(scrollY);
+        let elevator_flag = false;
+        const elevator = document.querySelector('.elevator')
+        document.addEventListener('scroll', function() {
+            scrollY = document.documentElement.scrollTop;
+            // console.log(scrollY);
+            if (elevator_flag === false && scrollY > 900) {
+                elevator.classList.add('active')
+                elevator_flag = true;
+            } else if (elevator_flag === true && scrollY <= 900){ 
+                elevator.classList.remove('active')
+                elevator_flag = false;
+            }
+        })
+        //电梯导览
+        const elevator_top = elevator.querySelector('.elevator_top')
+        const elevator_online = elevator.querySelector('.elevator_online')
+        const elevator_single = elevator.querySelector('.elevator_single')
+        const section_online = document.querySelector('#online')
+        const section_single = document.querySelector('#single')
+        const section_online_ = document.querySelector('#online_')
+        const section_single_ = document.querySelector('#single_')
+        let elevator_scrollY = []
+        elevator_scrollY.push({name: 'top', top: 0})
+        elevator_scrollY.push({name: 'online', top: section_online_.offsetTop - 100})
+        elevator_scrollY.push({name: 'single', top: section_single_.offsetTop - 100})
+        const elevatorPos = elevator.querySelectorAll('.elevator_class')
+        elevatorPos.forEach(function(pos) {
+            pos.addEventListener('click', function() {
+                const name = pos.dataset.name
+                const index = elevator_scrollY.findIndex(item=> item.name === name)
+                document.documentElement.scrollTop = elevator_scrollY[index].top
+                // console.log(elevator_scrollY);
+                if (elevator.querySelector('.active')) {
+                    elevator.querySelector('.active').classList.remove('active')
+                }
+                elevatorPos[index].classList.add('active')
+                console.log(index)
+                
+            })
+        })
+        document.addEventListener('scroll', function() {
+            scrollY = document.documentElement.scrollTop;
+            for (let i = 1; i < elevator_scrollY.length; ++i) {
+                let y = document.documentElement.scrollTop
+                // console.log(elevator.querySelector('.active'));
+                // console.log(y);
+                // console.log(elevator_scrollY);
+                if (elevator.querySelector('.active')) 
+                    elevator.querySelector('.active').classList.remove('active')
+                if (i < elevator_scrollY.length - 1 && 
+                y >= elevator_scrollY[i].top && 
+                y < elevator_scrollY[i + 1].top) {
+                    elevatorPos[i].classList.add('active')
+                    return
+                } else if (i == elevator_scrollY.length - 1 && 
+                y >= elevator_scrollY[i].top) {
+                    elevatorPos[i].classList.add('active')
+                    return
+                }
+            }
+        })
+        //点击左右滑动图片
+        const button_prev = document.querySelector('.button-prev')
+        const button_next = document.querySelector('.button-next')
+        button_prev.classList.add('disabled')
+        button_next.addEventListener('click', function() {
+            currentImg += 1;
+            const ul = slider.querySelector('.slider_img ul')
+            const pos = -(currentImg - 1)* window.innerWidth;
+            console.log(ul);
+            ul.style.transform = `translateX(${pos}px)`
+            slider.querySelector('.active').classList.remove('active');
+            const pointLi = document.querySelectorAll('.slider_point li')
+            pointLi[currentImg-1].classList.add('active')
+            if (currentImg === 5) {
+                button_next.classList.add('disabled')
+            } else {
+                button_prev.classList.remove('disabled')
+            }
+        })
+        button_prev.addEventListener('click', function() {
+            currentImg -= 1;
+            const ul = slider.querySelector('.slider_img ul')
+            const pos = -(currentImg - 1)* window.innerWidth;
+            console.log(ul);
+            ul.style.transform = `translateX(${pos}px)`
+            slider.querySelector('.active').classList.remove('active');
+            const pointLi = document.querySelectorAll('.slider_point li')
+            pointLi[currentImg-1].classList.add('active')
+            if (currentImg === 1) {
+                button_prev.classList.add('disabled')
+            } else {
+                button_next.classList.remove('disabled')
+            }
+        })
+        //下滚动调出导航栏
+        const header = document.querySelector('header')
+        lastPos = window.pageYoffset || document.documentElement.scrollTop
+        document.addEventListener('scroll', function() {
+            const currentPos = window.pageYoffset || document.documentElement.scrollTop
+            if (currentPos > lastPos) {
+                header.classList.add('active')
+            } else if (currentPos < lastPos) {
+                header.classList.remove('active')
+            }
+            lastPos = currentPos
+        })
+        // header.classList.add('active')
+    </script>
 </body>
 </html>
