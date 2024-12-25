@@ -13,6 +13,10 @@
             /* border-bottom: 1px solid rgb(255, 255, 255);
             padding-bottom: 2px; */
         }
+        body {
+            overflow-y:auto;
+
+        }
         #header_cook::before {
             content:'';
             width: 80%;
@@ -20,7 +24,175 @@
             position: absolute;
             bottom: 2px;
             left: 8px;
-            background-color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
+        }
+        header {
+            background-color: rgb(245,239,227);
+        }
+        .menu {
+            width: 75%;
+            height: 800px;
+            background: rgb(255, 255, 255, 1);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* flex-direction: column; */
+            position: fixed;
+            left: 12.5%;
+            top: 100px;
+        }
+        .flex {
+            display: flex;
+        }
+        .center {
+            justify-content: center;
+            align-items: center;
+        }
+        .column {
+            flex-direction: column;
+        }
+        .pic {
+            gap: 20px;
+        }
+        .bigPic {
+        
+        }
+        .bigPic img {
+            max-width: 600px;
+            max-height: 600px;
+        }
+        .smallPic {
+            gap: 20px;
+        }
+        .smallPic div {
+            width: 100px;
+            height: 100px;
+        }
+        .smallPic img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+        .menu h1 {
+            /* margin-right: 100px; */
+            margin-top: 50px;
+        }
+        .menu h3 {
+            /* margin-right: 290px; */
+            margin-top: 55px;
+            margin-left: 14px;
+        }
+        .menuContainer {
+            height: 800px;
+            
+        }
+        .close {
+            margin-top: 30px;
+            width: 30px;
+            height: 30px;
+        }
+        .menuTxt {
+            width: 100%;
+        }
+        .menuStep {
+            height: max-content;
+            width: 100%;
+            padding-left: 25px;
+            line-height: 1.8;
+        }
+        .menuList {
+            width: 75%;
+            background-color: rgb(255, 255, 255, 0.42);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 120px;
+            border-radius: 28px;
+        }
+        .filter {
+            width: 100%;
+            height: 350px;
+            background-color: rgb(255, 255, 255, 0.55);;
+            border-top-left-radius: 28px;
+            border-top-right-radius: 28px;
+            position: relative;
+        }
+        .filter h1 {
+            margin-top: 
+        }
+        .filter-bck {
+            position: absolute;
+            z-index: -999;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap ;
+            background-color: none;
+            justify-content: center;
+            align-items: center;
+            /* transform: rotate(45deg) */
+        }
+        .filter-bck img {
+            width: 24%;
+            height: 48%;
+        }
+        .container {
+            height: calc(100% - 100px);
+            width: 100%;
+            margin-top: 24px;
+            margin-bottom: 24px;
+            gap: 24px;
+        }
+        .columnList {
+            height: 200px;
+            width: 90%;
+            gap: 20px;
+        }
+        .imgFood {
+            background-color: black;
+            height: 200px;
+            width: 200px;
+            cursor: pointer;
+        }
+        .imgFood img {
+            height: 200px;
+            width: 200px;
+        }
+        /* 搜索框容器 */
+        .search-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px; /* 边距 */
+            width: 600px;
+            position: relative;
+        }
+        /* 搜索框输入框 */
+        .search-input {
+            padding: 10px; /* 内边距 */
+            font-size: 16px; /* 字体大小 */
+            border: 2px solid #534848; /* 边框 */
+            border-radius: 5px; /* 圆角 */
+            outline: none; /* 去除焦点时的轮廓 */
+            transition: border-color 0.3s; /* 边框颜色变化的过渡效果 */
+            border-radius: 24px;
+            background-color: transparent;
+            width: 600px;
+        }
+        /* 搜索框输入框获得焦点时的样式 */
+        .search-input:focus {
+            border-color: #007bff; /* 边框颜色变为蓝色 */
+        }
+        .search-icon {
+            margin-right: 20px;
+            position: absolute;
+            right: 10px;
+        }
+        .search-icon img {
+            width: 16px;
+            height: 16px;
         }
     </style>
 </head>
@@ -71,7 +243,220 @@
             </div>
         </div>
     </header>
-
+    <div class="menuList">
+        <div class="filter flex center column">
+            <div class="filter-bck">
+                <img src="img/foodbkg.png" alt="">
+                <img src="img/foodbkg.png" alt="">
+                <img src="img/foodbkg.png" alt="">
+                <img src="img/foodbkg.png" alt="">
+                <img src="img/foodbkg.png" alt="">
+                <img src="img/foodbkg.png" alt="">
+                <img src="img/foodbkg.png" alt="">
+                <img src="img/foodbkg.png" alt="">
+            </div>
+            <h1>simonの菜谱</h1>
+            <h1>alone♥</h1>
+            <h2></h2>
+            <div class="search-box">
+                <input type="text" class="search-input" >
+                <div class="search-icon">
+                    <img src="icon/search.png" alt="">
+                </div>
+                <!-- <button type="submit" class="search-button">搜索</button> -->
+            </div>
+        </div>
+        <div class="container flex center column">
+            <div class="columnList flex center">
+                <div data-id="1" class="imgFood flex center">
+                    <img src="cookPhoto/1.png" alt="">
+                </div>
+                <div data-id="2" class="imgFood">
+                    <img src="cookPhoto/2.png" alt="">
+                </div>
+                <div data-id="3" class="imgFood">
+                    <img src="cookPhoto/3.png" alt="">
+                </div>
+                <div data-id="4" class="imgFood">
+                    <img src="cookPhoto/4.png" alt="">
+                </div>
+                <div data-id="5" class="imgFood">
+                    <img src="cookPhoto/5.png" alt="">
+                </div>
+            </div>
+            <div class="columnList flex center">
+                <div data-id="1" class="imgFood flex center">
+                    <img src="cookPhoto/1.png" alt="">
+                </div>
+                <div data-id="2" class="imgFood">
+                    <img src="cookPhoto/2.png" alt="">
+                </div>
+                <div data-id="3" class="imgFood">
+                    <img src="cookPhoto/3.png" alt="">
+                </div>
+                <div data-id="4" class="imgFood">
+                    <img src="cookPhoto/4.png" alt="">
+                </div>
+                <div data-id="5" class="imgFood">
+                    <img src="cookPhoto/5.png" alt="">
+                </div>
+            </div>
+            <div class="columnList flex center">
+                <div data-id="1" class="imgFood flex center">
+                    <img src="cookPhoto/1.png" alt="">
+                </div>
+                <div data-id="2" class="imgFood">
+                    <img src="cookPhoto/2.png" alt="">
+                </div>
+                <div data-id="3" class="imgFood">
+                    <img src="cookPhoto/3.png" alt="">
+                </div>
+                <div data-id="4" class="imgFood">
+                    <img src="cookPhoto/4.png" alt="">
+                </div>
+                <div data-id="5" class="imgFood">
+                    <img src="cookPhoto/5.png" alt="">
+                </div>
+            </div>
+            <div class="columnList flex center">
+                <div data-id="1" class="imgFood flex center">
+                    <img src="cookPhoto/1.png" alt="">
+                </div>
+                <div data-id="2" class="imgFood">
+                    <img src="cookPhoto/2.png" alt="">
+                </div>
+                <div data-id="3" class="imgFood">
+                    <img src="cookPhoto/3.png" alt="">
+                </div>
+                <div data-id="4" class="imgFood">
+                    <img src="cookPhoto/4.png" alt="">
+                </div>
+                <div data-id="5" class="imgFood">
+                    <img src="cookPhoto/5.png" alt="">
+                </div>
+            </div>
+            <div class="columnList flex center">
+                <div data-id="1" class="imgFood flex center">
+                    <img src="cookPhoto/1.png" alt="">
+                </div>
+                <div data-id="2" class="imgFood">
+                    <img src="cookPhoto/2.png" alt="">
+                </div>
+                <div data-id="3" class="imgFood">
+                    <img src="cookPhoto/3.png" alt="">
+                </div>
+                <div data-id="4" class="imgFood">
+                    <img src="cookPhoto/4.png" alt="">
+                </div>
+                <div data-id="5" class="imgFood">
+                    <img src="cookPhoto/5.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="header.js"></script>
+    <script>
+        const menuLists = document.querySelectorAll('.imgFood')
+        menuLists.forEach((menu_) => {menu_.addEventListener('click', () => {
+            const id = menu_.dataset.id; 
+            // console.log(id);
+            const menu1 = new menu(id - 1); 
+            console.log(menu1);
+            menu1.open()
+            document.querySelector('.close').addEventListener('click', () => {menu1.close()})
+        })})
+        
+        
+        const menuDatas = [{
+            id: '0',
+            name: '清蒸鱼', 
+            property: '蒸菜', 
+            photos: ['/simon-alone/cookPhoto/1.png', '/simon-alone/cookPhoto/2.png', '/simon-alone/cookPhoto/3.png'],
+            step: ['1.xxx', '2.xxx', '3.xxx'],
+            food: ['鱼xx','酱油xx','盐xx']
+        }, {
+            id: '1',
+            name: '黄焖鸡', 
+            property: '蒸菜', 
+            photos: ['/simon-alone/cookPhoto/4.png', '/simon-alone/cookPhoto/5.png', '/simon-alone/cookPhoto/6.png'],
+            step: ['1.xxx', '2.xxx', '3.xxx'],
+            food: ['鸡xx','酱油xx','盐xx']
+        }]
+        class menu {
+            constructor(id) {
+                this.id = id
+                // this.name = name
+                // this.property = property
+                this.menu = document.createElement('div')
+                // this.menu.classList.add('.menu')
+                const {id_, name, property, photos, step, food} = menuDatas[id]
+                console.log(photos.length);
+                let img = ''
+                for (let i = 0; i < menuDatas[id].photos.length; i++) {
+                    img += (`<div class="flex">
+                                <img src="${photos[i]}" alt="">
+                            </div>`)
+                }
+                // console.log(img)
+                let step_ = step.map(function(st) {
+                    return `<p>${st}</p>`
+                }).join('')
+                console.log(step_);
+                console.log(food);
+                
+                let food_ = food.map( (fd) => {return `<p>${fd}</p>`}).join('')
+                console.log(food_);
+                
+                this.menu.innerHTML = `
+                    <div class="menu">
+                        <div style="flex: 1" class="pic flex column">
+                            <div class="bigPic">
+                                <img src="${photos[0]}" alt="">
+                            </div>
+                            <div class="smallPic flex">
+                                ${img}
+                            </div>
+                        </div>
+                        <div style="flex: 1" class="menuContainer flex center column">
+                            <div style="flex:2; width: 90%; justify-content: space-between" class="flex ">
+                                <div style="" class="flex">
+                                    <h1>${name}</h1>
+                                    <h3>${property}</h3>
+                                </div>
+                                <img class='close' src="/simon-alone/icon/close.png" alt="">
+                            </div>
+                            <div style="flex: 9" class="menuTxt flex">
+                                <div class="menuStep">
+                                    <h2>准备食材</h2>
+                                    ${food_}
+                                    <br>
+                                    <h2>制作步骤</h2>
+                                    ${step_}
+                                </div>
+                                <div class="menuBottom">
+                                    <img src="" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <img src="" alt="">
+                    </div>                
+                `
+            }
+        }
+        //上传图片
+        menu.prototype.img = function(id) {
+            let img = ''
+            for (let i = 0; i < menuDatas[id].photos.length; i++) {
+                img.concat(photos[i])
+            }
+            return img
+        }
+        menu.prototype.open = function() {
+            document.body.append(this.menu)
+        }
+        menu.prototype.close = function() {
+            this.menu.remove()
+        }
+    </script>
 </body>
 </html>
