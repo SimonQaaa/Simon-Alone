@@ -28,6 +28,7 @@
         }
         header {
             background-color: rgb(245,239,227);
+            z-index: 999;
         }
         .menu {
             width: 75%;
@@ -195,6 +196,35 @@
             width: 16px;
             height: 16px;
         }
+        .c {
+            margin-top: 28px;
+            width: 75%;
+            display: flex;
+            justify-content: center;
+            /* align-items: center; */
+            flex-direction: column;
+            gap: 20px;
+        }
+        .cc {
+            display: flex;
+            gap: 36px;
+        }
+        .cc span {
+            font-size: 18px;
+        }
+        .cc .cct {
+            font-weight: bold;
+            color: rgb(92, 119, 210);
+        }
+        .cc span.active {
+            color: rgb(43, 93, 220);
+        }
+        .filter h1 {
+            font-size: 40px;
+            color: transparent; 
+            background: linear-gradient(to bottom, rgb(216, 113, 113), rgb(127, 133, 203));
+            background-clip: text;
+        }
     </style>
 </head>
 <body>
@@ -256,16 +286,39 @@
                 <img src="img/foodbkg.png" alt="">
                 <img src="img/foodbkg.png" alt="">
             </div>
-            <h1>simonの菜谱</h1>
-            <h1>alone♥</h1>
-            <h2></h2>
-            <div class="search-box">
+            <h1>alone♥simonの菜谱</h1>
+            <div class="c">
+                <div class="cc">
+                    <span class="cct">做法</span>
+                    <span>所有</span>
+                    <span>蒸菜</span>
+                    <span>炒菜</span>
+                </div>
+                <div class="cc">
+                    <span class="cct">菜系</span>
+                    <span>所有</span>
+                    <span>湘菜</span>
+                    <span>川菜</span>
+                    <span>粤菜</span>
+                    <span>菜</span>
+                </div>
+                <div class="cc">
+                    <span class="cct">品类</span>
+                    <span>所有</span>
+                    <span>炒饭</span>
+                    <span>蒸饭</span>
+                    <span>炒菜</span>
+                    <span>粉面</span>
+                </div>
+            </div>
+            <!-- <div class="search-box">
                 <input type="text" class="search-input" >
                 <div class="search-icon">
                     <img src="icon/search.png" alt="">
                 </div>
-                <!-- <button type="submit" class="search-button">搜索</button> -->
-            </div>
+                <button type="submit" class="search-button">搜索</button>
+            </div> -->
+
         </div>
         <div class="container flex center column">
             <div class="columnList flex center">
