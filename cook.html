@@ -115,7 +115,7 @@
         .filter {
             width: 100%;
             height: 350px;
-            background-color: rgb(255, 255, 255, 0.55);;
+            /* background-color: rgb(255, 255, 255, 0.55);; */
             border-top-left-radius: 28px;
             border-top-right-radius: 28px;
             position: relative;
@@ -132,7 +132,7 @@
             flex-wrap: wrap ;
             background-color: none;
             justify-content: center;
-            align-items: center;
+            /* align-items: center; */
             /* transform: rotate(45deg) */
         }
         .filter-bck img {
@@ -143,9 +143,10 @@
         .container {
             height: calc(100% - 100px);
             width: 100%;
-            margin-top: 24px;
+            margin-top: 0px;
             margin-bottom: 24px;
             gap: 24px;
+            flex-wrap: wrap;
         }
         .columnList {
             height: 200px;
@@ -197,7 +198,7 @@
             height: 16px;
         }
         .c {
-            margin-top: 28px;
+            margin-top: 48px;
             width: 75%;
             display: flex;
             justify-content: center;
@@ -209,15 +210,20 @@
             display: flex;
             gap: 36px;
         }
-        .cc span {
-            font-size: 18px;
+        .cc .cct span {
+            font-size: 12px;
         }
         .cc .cct {
             font-weight: bold;
-            color: rgb(92, 119, 210);
+            color: transparent; 
+            background: linear-gradient(to bottom, rgb(216, 113, 113), rgb(127, 133, 203));
+            background-clip: text;
         }
-        .cc span.active {
-            color: rgb(43, 93, 220);
+        .cc span:hover {
+            color: transparent; 
+            background: linear-gradient(to bottom, rgb(216, 113, 113), rgb(127, 133, 203));
+            background-clip: text;
+            cursor: pointer;
         }
         .filter h1 {
             font-size: 40px;
@@ -225,6 +231,16 @@
             background: linear-gradient(to bottom, rgb(216, 113, 113), rgb(127, 133, 203));
             background-clip: text;
         }
+        .cc a {
+            text-decoration: none;
+            color: black;
+        }
+        .cc span.selected {
+            color: transparent; 
+            background: linear-gradient(to bottom, rgb(216, 113, 113), rgb(127, 133, 203));
+            background-clip: text;
+        }
+        
     </style>
 </head>
 <body>
@@ -281,34 +297,34 @@
                 <img src="img/foodbkg.png" alt="">
                 <img src="img/foodbkg.png" alt="">
                 <img src="img/foodbkg.png" alt="">
+                <!-- <img src="img/foodbkg.png" alt="">
                 <img src="img/foodbkg.png" alt="">
                 <img src="img/foodbkg.png" alt="">
-                <img src="img/foodbkg.png" alt="">
-                <img src="img/foodbkg.png" alt="">
+                <img src="img/foodbkg.png" alt=""> -->
             </div>
             <h1>alone♥simonの菜谱</h1>
             <div class="c">
                 <div class="cc">
                     <span class="cct">做法</span>
-                    <span>所有</span>
-                    <span>蒸菜</span>
-                    <span>炒菜</span>
+                    <a href=""><span>所有</span></a>
+                    <a href=""><span>炒菜</span></a>
+                    <a href=""><span>蒸菜</span></a>
                 </div>
                 <div class="cc">
                     <span class="cct">菜系</span>
-                    <span>所有</span>
-                    <span>湘菜</span>
-                    <span>川菜</span>
-                    <span>粤菜</span>
-                    <span>菜</span>
+                    <a href=""><span>所有</span></a>
+                    <a href=""><span>湘菜</span></a>
+                    <a href=""><span>川菜</span></a>
+                    <a href=""><span>粤菜</span></a>
                 </div>
                 <div class="cc">
                     <span class="cct">品类</span>
-                    <span>所有</span>
-                    <span>炒饭</span>
-                    <span>蒸饭</span>
-                    <span>炒菜</span>
-                    <span>粉面</span>
+                    <a href=""><span>所有</span></a>
+                    <a href=""><span>炒菜</span></a>
+                    <a href=""><span>炒饭</span></a>
+                    <a href=""><span>蒸饭</span></a>
+                    <a href=""><span>炒菜</span></a>
+                    <a href=""><span>粉面</span></a>
                 </div>
             </div>
             <!-- <div class="search-box">
@@ -320,107 +336,43 @@
             </div> -->
 
         </div>
-        <div class="container flex center column">
-            <div class="columnList flex center">
-                <div data-id="1" class="imgFood flex center">
-                    <img src="cookPhoto/1.png" alt="">
-                </div>
-                <div data-id="2" class="imgFood">
-                    <img src="cookPhoto/2.png" alt="">
-                </div>
-                <div data-id="3" class="imgFood">
-                    <img src="cookPhoto/3.png" alt="">
-                </div>
-                <div data-id="4" class="imgFood">
-                    <img src="cookPhoto/4.png" alt="">
-                </div>
-                <div data-id="5" class="imgFood">
-                    <img src="cookPhoto/5.png" alt="">
-                </div>
+        <div class="container flex center ">
+            <div data-id="1" class="imgFood flex center">
+                <img src="cookPhoto/1.png" alt="">
             </div>
-            <div class="columnList flex center">
-                <div data-id="1" class="imgFood flex center">
-                    <img src="cookPhoto/1.png" alt="">
-                </div>
-                <div data-id="2" class="imgFood">
-                    <img src="cookPhoto/2.png" alt="">
-                </div>
-                <div data-id="3" class="imgFood">
-                    <img src="cookPhoto/3.png" alt="">
-                </div>
-                <div data-id="4" class="imgFood">
-                    <img src="cookPhoto/4.png" alt="">
-                </div>
-                <div data-id="5" class="imgFood">
-                    <img src="cookPhoto/5.png" alt="">
-                </div>
+            <div data-id="2" class="imgFood">
+                <img src="cookPhoto/2.png" alt="">
             </div>
-            <div class="columnList flex center">
-                <div data-id="1" class="imgFood flex center">
-                    <img src="cookPhoto/1.png" alt="">
-                </div>
-                <div data-id="2" class="imgFood">
-                    <img src="cookPhoto/2.png" alt="">
-                </div>
-                <div data-id="3" class="imgFood">
-                    <img src="cookPhoto/3.png" alt="">
-                </div>
-                <div data-id="4" class="imgFood">
-                    <img src="cookPhoto/4.png" alt="">
-                </div>
-                <div data-id="5" class="imgFood">
-                    <img src="cookPhoto/5.png" alt="">
-                </div>
+            <div data-id="3" class="imgFood">
+                <img src="cookPhoto/3.png" alt="">
             </div>
-            <div class="columnList flex center">
-                <div data-id="1" class="imgFood flex center">
-                    <img src="cookPhoto/1.png" alt="">
-                </div>
-                <div data-id="2" class="imgFood">
-                    <img src="cookPhoto/2.png" alt="">
-                </div>
-                <div data-id="3" class="imgFood">
-                    <img src="cookPhoto/3.png" alt="">
-                </div>
-                <div data-id="4" class="imgFood">
-                    <img src="cookPhoto/4.png" alt="">
-                </div>
-                <div data-id="5" class="imgFood">
-                    <img src="cookPhoto/5.png" alt="">
-                </div>
+            <div data-id="4" class="imgFood">
+                <img src="cookPhoto/4.png" alt="">
             </div>
-            <div class="columnList flex center">
-                <div data-id="1" class="imgFood flex center">
-                    <img src="cookPhoto/1.png" alt="">
-                </div>
-                <div data-id="2" class="imgFood">
-                    <img src="cookPhoto/2.png" alt="">
-                </div>
-                <div data-id="3" class="imgFood">
-                    <img src="cookPhoto/3.png" alt="">
-                </div>
-                <div data-id="4" class="imgFood">
-                    <img src="cookPhoto/4.png" alt="">
-                </div>
-                <div data-id="5" class="imgFood">
-                    <img src="cookPhoto/5.png" alt="">
-                </div>
+            <div data-id="5" class="imgFood">
+                <img src="cookPhoto/5.png" alt="">
             </div>
+            <div data-id="1" class="imgFood flex center">
+                <img src="cookPhoto/1.png" alt="">
+            </div>
+            <div data-id="2" class="imgFood">
+                <img src="cookPhoto/2.png" alt="">
+            </div>
+            <div data-id="3" class="imgFood">
+                <img src="cookPhoto/3.png" alt="">
+            </div>
+            <div data-id="4" class="imgFood">
+                <img src="cookPhoto/4.png" alt="">
+            </div>
+            <div data-id="5" class="imgFood">
+                <img src="cookPhoto/5.png" alt="">
+            </div>
+        </div>
+            
         </div>
     </div>
     <script src="header.js"></script>
     <script>
-        const menuLists = document.querySelectorAll('.imgFood')
-        menuLists.forEach((menu_) => {menu_.addEventListener('click', () => {
-            const id = menu_.dataset.id; 
-            // console.log(id);
-            const menu1 = new menu(id - 1); 
-            console.log(menu1);
-            menu1.open()
-            document.querySelector('.close').addEventListener('click', () => {menu1.close()})
-        })})
-        
-        
         const menuDatas = [{
             id: '0',
             name: '清蒸鱼', 
@@ -511,6 +463,57 @@
         menu.prototype.close = function() {
             this.menu.remove()
         }
+
+        //筛选后当前选择重点显示
+        const ccs = document.querySelectorAll('.cc span')
+        ccs.forEach((cc) => {
+            cc.addEventListener('click', function(e) {
+                console.log(1);
+                e.preventDefault()
+                cc.classList.add('selected')
+                console.log(cc);
+            })
+        })
+        console.log(ccs);
+        data = [
+            {id: 1, name: '番茄炒鸡蛋', src: 'cookPhoto/1.png'},
+            {id: 2, name: '番茄炒鸡蛋2', src: 'cookPhoto/2.png'},
+            {id: 3, name: '番茄炒鸡蛋3', src: 'cookPhoto/3.png'}
+        ]
+        function renderMenu(data) {
+            const container = document.querySelector('.container')
+            container.innerHTML = ''
+            console.log(data);
+            
+            data.forEach(item => {
+                const listItem = document.createElement('div')
+                
+                
+                listItem.classList.add('imgFood')
+                listItem.dataset.id = item.id
+                listItem.innerHTML = `
+                    <img src="${item.src}" alt="${item.name}"> 
+                `
+                console.log(listItem);
+                container.appendChild(listItem)
+            })
+        }
+        renderMenu(data)
+
+        //筛选功能
+        
+
+        //点击图片查看详情做法
+        const menuLists = document.querySelectorAll('.imgFood')
+        menuLists.forEach((menu_) => {menu_.addEventListener('click', () => {
+            const id = menu_.dataset.id; 
+            console.log(id);
+            const menu1 = new menu(id); 
+            console.log(menu1);
+            menu1.open()
+            document.querySelector('.close').addEventListener('click', () => {menu1.close()})
+        })})
+
     </script>
 </body>
 </html>
