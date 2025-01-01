@@ -137,7 +137,7 @@
         }
         .container {
             height: calc(100% - 100px);
-            width: 100%;
+            width: 1096px;
             margin-top: 0px;
             margin-bottom: 24px;
             gap: 24px;
@@ -194,7 +194,7 @@
         }
         .c {
             margin-top: 48px;
-            width: 75%;
+            width: 80%;
             display: flex;
             justify-content: center;
             /* align-items: center; */
@@ -203,7 +203,8 @@
         }
         .cc {
             display: flex;
-            gap: 36px;
+            column-gap: 36px;
+            flex-wrap: wrap;
         }
         .cc .cct span {
             font-size: 12px;
@@ -304,6 +305,17 @@
                     <a href=""><span>所有</span></a>
                     <a href=""><span>炒菜</span></a>
                     <a href=""><span>蒸菜</span></a>
+                    <a href=""><span>炖菜</span></a>
+                    <a href=""><span>汤面</span></a>
+                    <a href=""><span>炒面</span></a>
+                    <a href=""><span>焖面</span></a>
+                    <a href=""><span>炒粉</span></a>
+                    <a href=""><span>汤粉</span></a>
+                    <a href=""><span>炒饭</span></a>
+                    <a href=""><span>蒸饭</span></a>
+                    <a href=""><span>粥</span></a>
+                    <a href=""><span>汤</span></a>
+                    <a href=""><span>甜点</span></a>
                 </div>
                 <div data-id="2" class="cc">
                     <span class="cct">菜系</span>
@@ -311,15 +323,21 @@
                     <a href=""><span>湘菜</span></a>
                     <a href=""><span>川菜</span></a>
                     <a href=""><span>粤菜</span></a>
+                    <a href=""><span>鲁菜</span></a>
+                    <a href=""><span>桂菜</span></a>
+                    <a href=""><span>家常菜</span></a>
+                    <a href=""><span>甜点</span></a>
                 </div>
                 <div data-id="3" class="cc">
                     <span class="cct">品类</span>
                     <a href=""><span>所有</span></a>
-                    <a href=""><span>炒菜</span></a>
-                    <a href=""><span>炒饭</span></a>
-                    <a href=""><span>蒸饭</span></a>
-                    <a href=""><span>炒菜</span></a>
-                    <a href=""><span>粉面</span></a>
+                    <a href=""><span>饭类</span></a>
+                    <a href=""><span>菜类</span></a>
+                    <a href=""><span>粉类</span></a>
+                    <a href=""><span>面类</span></a>
+                    <a href=""><span>粥类</span></a>
+                    <a href=""><span>汤类</span></a>
+                    <a href=""><span>甜品</span></a>
                 </div>
             </div>
             <!-- <div class="search-box">
@@ -331,37 +349,8 @@
             </div> -->
 
         </div>
-        <div class="container flex center ">
-            <div data-id="1" class="imgFood flex center">
-                <img src="cookPhoto/1.png" alt="">
-            </div>
-            <div data-id="2" class="imgFood">
-                <img src="cookPhoto/2.png" alt="">
-            </div>
-            <div data-id="3" class="imgFood">
-                <img src="cookPhoto/3.png" alt="">
-            </div>
-            <div data-id="4" class="imgFood">
-                <img src="cookPhoto/4.png" alt="">
-            </div>
-            <div data-id="5" class="imgFood">
-                <img src="cookPhoto/5.png" alt="">
-            </div>
-            <div data-id="1" class="imgFood flex center">
-                <img src="cookPhoto/1.png" alt="">
-            </div>
-            <div data-id="2" class="imgFood">
-                <img src="cookPhoto/2.png" alt="">
-            </div>
-            <div data-id="3" class="imgFood">
-                <img src="cookPhoto/3.png" alt="">
-            </div>
-            <div data-id="4" class="imgFood">
-                <img src="cookPhoto/4.png" alt="">
-            </div>
-            <div data-id="5" class="imgFood">
-                <img src="cookPhoto/5.png" alt="">
-            </div>
+        <div class="container flex  ">
+            
         </div>
             
         </div>
@@ -464,7 +453,7 @@
         ccs.forEach((cc) => {
             const menus = cc.querySelectorAll('span')
             // console.log(menus);
-            
+            menus[1].classList.add('selected')
             menus.forEach((menu_) => {
                 menu_.addEventListener('click', function(e) {
                     e.preventDefault()
@@ -494,16 +483,35 @@
         })
         // console.log(ccts);
         data = [
-            {id: 1, name: '番茄炒鸡蛋', filter: ['炒菜', '湘菜', '炒菜'],src: 'cookPhoto/1.png'},
-            {id: 2, name: '番茄炒鸡蛋2', filter: ['炒菜', '湘菜', '炒菜'],src: 'cookPhoto/2.png'},
-            {id: 3, name: '番茄炒鸡蛋3', filter: ['炒菜', '湘菜', '炒菜'],src: 'cookPhoto/3.png'},
-            {id: 4, name: '番茄炒鸡蛋3', filter: ['炒菜', '湘菜', '炒菜'],src: 'cookPhoto/3.png'},
-            {id: 5, name: '番茄炒鸡蛋3', filter: ['炒菜', '湘菜', '炒菜'],src: 'cookPhoto/3.png'},
-            {id: 6, name: '番茄炒鸡蛋3', filter: ['炒菜', '湘菜', '炒菜'],src: 'cookPhoto/3.png'},
-            {id: 7, name: '番茄炒鸡蛋3', filter: ['炒菜', '湘菜', '炒菜'],src: 'cookPhoto/3.png'},
-            {id: 8, name: '番茄炒鸡蛋3', filter: ['炒菜', '湘菜', '炒菜'],src: 'cookPhoto/3.png'},
-            {id: 9, name: '番茄炒鸡蛋3', filter: ['炒菜', '湘菜', '炒菜'],src: 'cookPhoto/3.png'},
-            {id: 10, name: '番茄炒鸡蛋3', filter: ['炒菜', '湘菜', '炒菜'],src: 'cookPhoto/3.png'}
+            {id: 1, name: '蒜苔牛肉面', filter: ['汤面', '家常菜', '面类'],src: 'cookPhoto/蒜苔牛肉面.png'},
+            {id: 2, name: '蒜苔牛肉', filter: ['炒菜', '湘菜', '菜类'],src: 'cookPhoto/蒜苔牛肉.png'},
+            {id: 3, name: '土豆炖排骨', filter: ['炖菜', '湘菜', '菜类'],src: 'cookPhoto/土豆炖排骨.png'},
+            {id: 4, name: '白灼菜心', filter: ['炒菜', '粤菜', '菜类'],src: 'cookPhoto/白灼菜心.png'},
+            {id: 5, name: '白灼虾', filter: ['炒菜', '粤菜', '菜类'],src: 'cookPhoto/白灼虾.png'},
+            {id: 6, name: '爆炒花甲', filter: ['炒菜', '粤菜', '菜类'],src: 'cookPhoto/爆炒花甲.png'},
+            {id: 7, name: '葱油鸡', filter: ['炒菜', '粤菜', '菜类'],src: 'cookPhoto/葱油鸡.png'},
+            {id: 8, name: '大葱牛肉', filter: ['炒菜', '鲁菜', '菜类'],src: 'cookPhoto/大葱牛肉.png'},
+            {id: 9, name: '豆芽炒肉', filter: ['炒菜', '家常菜', '菜类'],src: 'cookPhoto/豆芽炒肉.png'},
+            {id: 10, name: '番茄炒鸡蛋', filter: ['炒菜', '鲁菜', '菜类'],src: 'cookPhoto/番茄炒鸡蛋.png'},
+            {id: 11, name: '腐竹牛肉', filter: ['炒菜', '粤菜', '菜类'],src: 'cookPhoto/腐竹牛肉.png'},
+            {id: 12, name: '麻辣虾尾', filter: ['炒菜', '湘菜', '菜类'],src: 'cookPhoto/麻辣虾尾.png'},
+            {id: 13, name: '清炒空心菜', filter: ['炒菜', '家常菜', '菜类'],src: 'cookPhoto/清炒空心菜.png'},
+            {id: 14, name: '清炒上海青', filter: ['炒菜', '家常菜', '菜类'],src: 'cookPhoto/清炒上海青.png'},
+            {id: 15, name: '清炒油麦菜', filter: ['炒菜', '家常菜', '菜类'],src: 'cookPhoto/清炒油麦菜.png'},
+            {id: 16, name: '清汤面', filter: ['汤面', '家常菜', '面类'],src: 'cookPhoto/清汤面.png'},
+            {id: 17, name: '西葫芦炒牛肉', filter: ['炒菜', '家常菜', '菜类'],src: 'cookPhoto/西葫芦炒牛肉.png'},
+            {id: 18, name: '小炒西葫芦', filter: ['炒菜', '家常菜', '菜类'],src: 'cookPhoto/小炒西葫芦.png'},
+            {id: 19, name: '小炒香干', filter: ['炒菜', '湘菜', '菜类'],src: 'cookPhoto/小炒香干.png'},
+            {id: 20, name: '洋葱炒鸡肉', filter: ['炒菜', '家常菜', '菜类'],src: 'cookPhoto/洋葱炒鸡肉.png'},
+            {id: 21, name: '蒸鲈鱼', filter: ['蒸菜', '粤菜', '菜类'],src: 'cookPhoto/蒸鲈鱼.png'},
+            {id: 22, name: '洋葱炒牛肉', filter: ['炒菜', '湘菜', '菜类'],src: 'cookPhoto/洋葱炒牛肉.png'},
+            {id: 23, name: '西红柿鸡蛋面', filter: ['炒面', '家常菜', '面类'],src: 'cookPhoto/西红柿鸡蛋面.png'},
+            {id: 24, name: '西红柿鸡蛋汤面', filter: ['汤面', '家常菜', '面类'],src: 'cookPhoto/西红柿鸡蛋汤面.png'},
+            {id: 25, name: '红枣银耳牛奶羹', filter: ['甜点', '甜点', '甜点'],src: 'cookPhoto/红枣银耳牛奶羹.png'},
+            {id: 26, name: '爆炒鱿鱼', filter: ['炒菜', '鲁菜', '菜类'],src: 'cookPhoto/爆炒鱿鱼.png'},
+            {id: 27, name: '酸辣空心菜梗', filter: ['炒菜', '桂菜', '菜类'],src: 'cookPhoto/酸辣空心菜梗.png'},
+            {id: 28, name: '牛肉粉', filter: ['汤粉', '家常菜', '粉类'],src: 'cookPhoto/牛肉粉.png'},
+            {id: 29, name: '海带排骨汤', filter: ['汤', '家常菜', '汤类'],src: 'cookPhoto/海带排骨汤.png'},
         ]
         function renderMenu(data) { 
             const container = document.querySelector('.container')
