@@ -213,7 +213,8 @@
     <div class="musicPlayer flex">
         <div style="flex: 2" class="musicPlayerDiv flex column">
             <div class="intro flex center">
-                <div class="img">
+                <div style="border-radius: 24px;" class="img">
+                    <img style="border-radius: 24px;width:100%; height: 100%" src="./img/music.jpg" alt="">
                 </div>
                 <div class="text">
                     <h3 class="title">我的音乐</h3>
@@ -252,7 +253,7 @@
                     </div>
                 </div>
                 <div class="musicList flex center">
-                    <audio data-id="4" src="music/如果可以.mp3" control></audio>
+                    <audio data-id="4" src="music/如果可以.mp4" control></audio>
                     <p style="width: 200px">如果可以</p>
                     <div class="icon_ flex center">
                         <img src="icon/love.png" alt="">
@@ -261,7 +262,7 @@
                     </div>
                 </div>
                 <div class="musicList flex center">
-                    <audio data-id="5" src="music/爱很简单.mp3" control></audio>
+                    <audio data-id="5" src="music/爱很简单.mp4" control></audio>
                     <p style="width: 200px">爱很简单</p>
                     <div class="icon_ flex center">
                         <img src="icon/love.png" alt="">
@@ -296,7 +297,6 @@
                         <img src="icon/download.png" alt="">
                     </div>
                 </div>
-                
             </div>
         </div>
         <div style="flex: 5" class="musicPlayerDiv flex column center" >
@@ -326,9 +326,12 @@
             </div>
         </div>
     </div>
-    <div class="cd flex center column">
-        
-       
+    <h1 style="width: 80%; margin-top: 24px; margin-bottom: 24px;">my cd</h1>
+    <div style="width:80%; gap: 36px; margin-bottom: 24px;" class="cd flex">
+        <img style="width: 312px; height: 312px;" src="./img/music1.jpg" alt="">
+        <img style="width: 312px; height: 312px;" src="./img/music2.jpg" alt="">
+        <img style="width: 312px; height: 312px;" src="./img/music3.jpg" alt="">
+        <img style="width: 312px; height: 312px;" src="./img/music4.jpg" alt="">
     </div>
     <script src="header.js"></script>
     <script>
@@ -371,7 +374,6 @@
             songRender()
             isPlaying = false
             draw(audio_)
-            
         })
         preMusic.addEventListener('click', function() {
             currentMusic = currentMusic > 1 ? currentMusic - 1 : 8;

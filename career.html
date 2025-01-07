@@ -7,6 +7,29 @@
     <title>career</title>
     <link rel="stylesheet" href="header.css">
     <style>
+        ::-webkit-scrollbar {
+            width: 0px; /* 滚动条的宽度 */
+        }
+
+        /* 滚动条轨道 */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; /* 轨道背景色 */
+        }
+
+        /* 滚动条滑块 */
+        ::-webkit-scrollbar-thumb {
+            background: #888; /* 滑块背景色 */
+            border-radius: 0px; /* 滑块圆角 */
+        }
+
+        /* 滚动条滑块在悬停时的效果 */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; /* 悬停时的滑块背景色 */
+        }
+        body {
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
         #header_career {
             position: relative;
             /* text-decoration: underline #ffffff; */
@@ -20,7 +43,64 @@
             position: absolute;
             bottom: 2px;
             left: 8px;
-            background-color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
+        }
+        header {
+            background-color: rgb(245,239,227);
+            z-index: 999;
+        }
+        .container {
+            width: 80%;
+            height: max-content;
+            /* background-color: black; */
+            position: relative;
+            margin: 120px auto;
+        }
+        .container::before {
+            content:'';
+            height: 100%;
+            width: 3px;
+            background-color: rgb(255, 255, 255, 0.8);
+            position: absolute;
+            left: 50%;
+            z-index: -999;
+        }
+        .leftDiv {
+            margin: 10px 0px 10px 0px;
+        }
+        .rightDiv {
+            
+            margin: 10px 0px 10px 45%; 
+        }
+        .content {
+            width: 55%;
+            height: 180px;
+            /* background-color: white; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .txt {
+            flex: 9;
+        }
+        .txtDiv {
+            border-radius: 16px;
+            height: 150px;
+            background-color: rgb(255,255,255, 0.5);
+            border-radius: 16px;
+            width: 80%;
+            padding: 10px;
+        }
+        .year {
+            flex: 2;
+            height: 60px;
+            background-color: white;
+            border-radius: 20px;
         }
     </style>
 </head>
@@ -71,7 +151,68 @@
             </div>
         </div>
     </header>
-
+    <div class="container">
+        <div class="content leftDiv">
+            <div class="center txt">
+                <div class="txtDiv">
+                    simon
+                </div>
+            </div>
+            <div class="center year">
+                2019
+            </div>
+        </div>
+        <div class="content rightDiv">
+            <div class="center year">
+                2020
+            </div>
+            <div class="center txt">
+                <div class="txtDiv">
+                    simon
+                </div>
+            </div>
+        </div>
+        <div class="content leftDiv">
+            <div class="center txt">
+                <div class="txtDiv">
+                    simon
+                </div>
+            </div>
+            <div class="center year">
+                2021
+            </div>
+        </div>
+        <div class="content rightDiv">
+            <div class="center year">
+                2022
+            </div>
+            <div class="center txt">
+                <div class="txtDiv">
+                    simon
+                </div>
+            </div>
+        </div>
+        <div class="content leftDiv">
+            <div class="center txt">
+                <div class="txtDiv">
+                    simon
+                </div>
+            </div>
+            <div class="center year">
+                2023
+            </div>
+        </div>
+        <div class="content rightDiv">
+            <div class="center year">
+                2024
+            </div>
+            <div class="center txt">
+                <div class="txtDiv">
+                    simon
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="header.js" defer></script>
 </body>
 </html>
